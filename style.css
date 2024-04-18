@@ -1,0 +1,88 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.form__div{
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: "Roboto";
+flex-direction: column;
+gap: 30px;
+background-color: #C4DFE6;
+padding-top: 30px;
+
+}
+.form__div h1{
+    font-size: 40px;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 38%;
+    padding: 30px;
+    background-color: #66A5AD;
+    gap: 12px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+}
+form label{
+    font-size: 17px;
+    color: black;
+    font-weight: bold;
+}
+
+form input{
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: #C4DFE6;
+    font-size: 15px;
+}
+form input::placeholder{
+    color: black;
+
+}
+form input:focus{
+    outline: none;
+
+}
+form button{
+    height: 50px;
+    width: 30%;
+    margin-left: auto;
+    border-radius: 10px;
+    border: none;
+    background-color: #101010;
+    color: white;
+    font-size: 15px;
+    margin-top: 10px;
+}
+#nationality{
+    width: 100%;
+    padding: 15px;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    color: black;
+    background-color: #C4DFE6;
+    
+}
+
+
+#position{
+    width: 100%;
+    padding: 15px;
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    color: black;
+    background-color: #C4DFE6;
+}
+
