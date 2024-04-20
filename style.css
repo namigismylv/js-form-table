@@ -86,3 +86,8 @@ form button{
     background-color: #C4DFE6;
 }
 
+#table1{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 60px;
+}

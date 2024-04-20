@@ -5,16 +5,16 @@ const ageInp = document.getElementById("age");
 const nationalitySelectBox = document.getElementById("nationality");
 const positionSelectBox = document.getElementById("position");
 const experienceInp = document.getElementById("experience");
-const table = document.querySelector("#list table tbody");
-const list=document.getElementById("list")
+const tbody = document.getElementById("body");
+const table=document.getElementById("table1")
 const users = [];
+let id=0
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (nameInp.value.trim() === '' || surnameInp.value.trim() === '' || ageInp.value.trim() === '' || experienceInp.value.trim() === '') {
-        alert("Xahiş edirik, bütün sahələri doldurun.");
-    } else {
-        var newUser = {
+
+        let newUser = {
+            id:id,
             name: nameInp.value,
             surname: surnameInp.value,
             age: ageInp.value,
@@ -22,41 +22,62 @@ form.addEventListener("submit", (e) => {
             position: positionSelectBox.value,
             experience: experienceInp.value,
         };
-    }
+    id++
     users.push(newUser);
-    renderTableRow(newUser);
-    list.style.display="block";
+    renderTableRow(users);
+    form.reset()
     
+
 
 });
 
 
 const renderTableRow = (user) => {
-    const newRow = document.createElement("tr");
-    newRow.innerHTML = `
-        <th scope="row">${users.length}</th>
-        <td>${user.name}</td>
-        <td>${user.surname}</td>
-        <td>${user.age}</td>
-        <td>${user.nationality}</td>
-        <td>${user.position}</td>
-        <td>${user.experience}</td>
-        <td>
-            <button class="btn btn-warning btn-sm">Edit</button>
-        </td>
-        <td>
-        <button class="btn btn-danger btn-sm">Delete</button>
+    tbody.innerHTML = ""
 
-        </td>
-    `;
-    table.appendChild(newRow);
-    
+    for (let i = 0; i < user.length; i++) {
+        tbody.innerHTML += `
+            <tr>
+            <th scope="row">${i+1}</th>
+            <td>${user[i].name}</td>
+            <td>${user[i].surname}</td>
+            <td>${user[i].age}</td>
+            <td>${user[i].nationality}</td>
+            <td>${user[i].position}</td>
+            <td>${user[i].experience}</td>
+            <td>
+            <button onclick="editHandler(${users[i].id})" class="btn btn-warning btn-sm">Edit</button>
+            </td>
+            <td>
+            <button onclick="deleteHandler(${users[i].id})" class="btn btn-danger btn-sm">Delete</button>
+            </td>
+            </tr>
+        `;
+
+    }
+
+
 
 };
 
-const deleteHandler  =(id)=>{
+const deleteHandler = (id) => {
+    let confirm_delete=confirm("Are you sure you want to delete it??")
+    if(confirm_delete){
+
+        let target = users.find(x => x.id == id)
+        let indexOfTarget = users.indexOf(target)
+        users.splice(indexOfTarget, 1)
+        renderTableRow(users)
+
+    }
+}
+
+const editHandler = (id)=>{
     let target=users.find(x=>x.id==id)
-    let indexOfTarget=users.indexOf(target)
-    users.splice(indexOfTarget,1)
+    let newUserName = prompt("New name")
+    let newUserSurname=prompt("New surname")
+    target.name=newUserName
+    target.surname=newUserSurname
     renderTableRow(users)
+    console.log(users);
 }
